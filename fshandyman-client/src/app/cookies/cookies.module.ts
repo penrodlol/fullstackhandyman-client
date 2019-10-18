@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CookiesComponent } from './cookies/cookies.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [CookiesComponent],
   imports: [
     CommonModule
   ]
