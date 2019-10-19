@@ -2,16 +2,20 @@
     height: 100%;
 }
 
+mat-sidenav-container {
+    background-color: transparent;
+}
+
 mat-sidenav {
     width: 300px;
     left: 0;
-    background-color: #a0a0a0;
+    background-color: #dbdbdb;
     color: #000000;
     border: solid 0.5px #505050;
 }
 
 .nav-menu-toolbar {
-    background-color: #d6d6d6;
+    background-color: #c7c7c7;
     color: #000000;
     border: solid 0.5px #505050;
     border-radius: 10px;
