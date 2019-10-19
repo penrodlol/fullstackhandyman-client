@@ -1,0 +1,35 @@
+.nav-menu-container {
+    height: 100%;
+}
+
+mat-sidenav {
+    width: 300px;
+    left: 0;
+    background-color: #a0a0a0;
+    color: #000000;
+    border: solid 0.5px #505050;
+}
+
+.nav-menu-toolbar {
+    background-color: #d6d6d6;
+    color: #000000;
+    border: solid 0.5px #505050;
+    border-radius: 10px;
+}
+
+.title {
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+img {
+    width: 50px;
+    margin-right: 20px;
+}
+
+::ng-deep {
+    .mat-list-base .mat-list-item {
+        height: 60px !important;
+    }
+}
