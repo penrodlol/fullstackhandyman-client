@@ -11,7 +11,7 @@ import { CookieTableComponent } from './builder/cookie-table/cookie-table.compon
 const cookieRoutes: Routes = [
   { path: '', component: CookiesComponent }
 ];
-
+//test
 @NgModule({
   declarations: [CookiesComponent, BuilderComponent, OutputComponent, CookieTableComponent],
   imports: [
