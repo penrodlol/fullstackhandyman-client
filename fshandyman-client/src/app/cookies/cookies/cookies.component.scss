@@ -1,2 +1,11 @@
 .cookies-container {
+    display: flex;
+    .builder-container, .output-container {
+        flex-direction: column;
+        flex: 50;
+        padding: 20px;
+        margin: 15px;
+        background-color: #ffffffef;
+        border: solid 1px black;
+    }
 }

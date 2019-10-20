@@ -1,0 +1,14 @@
+#cookie-builder-form {
+    mat-form-field {
+        width: 250px;
+    }
+    mat-label {
+        color: #04202d;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: #04202d;
+    }
+    .mat-form-field-outline {
+        background-color: rgb(223, 223, 223);
+    }
+}

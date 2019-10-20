@@ -1,0 +1,14 @@
+<div class='cookie-builder-container'>
+    <div class='header-row'>
+        <h2>Cookie Builder</h2>
+        <mat-divider></mat-divider>
+    </div>
+    <div id="cookie-builder-form" class='body-row'>
+        <form [formGroup]='cookieForm'>
+            <mat-form-field appearance='outline'>
+                <mat-label>Prepend Root Name (optional)</mat-label>
+                <input matInput formControlName='cookiesRootName'>
+            </mat-form-field>
+        </form>
+    </div>
+</div>
