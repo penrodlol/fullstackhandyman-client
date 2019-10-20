@@ -6,13 +6,14 @@ import { MaterialModule } from 'src/external/style/material/material.module';
 import { BuilderComponent } from './builder/builder.component';
 import { OutputComponent } from './output/output.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CookieTableComponent } from './builder/cookie-table/cookie-table.component';
 
 const cookieRoutes: Routes = [
   { path: '', component: CookiesComponent }
 ];
 
 @NgModule({
-  declarations: [CookiesComponent, BuilderComponent, OutputComponent],
+  declarations: [CookiesComponent, BuilderComponent, OutputComponent, CookieTableComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(cookieRoutes),
