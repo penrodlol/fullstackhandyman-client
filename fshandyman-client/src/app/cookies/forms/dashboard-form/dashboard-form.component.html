@@ -34,3 +34,5 @@
         </mat-radio-group>
     </div>
 </form>
+<button [disabled]='!isDashboardFormValid()' [ngClass]="{'notAllowed': !isDashboardFormValid()}"
+            mat-raised-button (click)='submitDashboardForm()'>Submit</button>

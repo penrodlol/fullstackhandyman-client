@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { DashboardModel } from '../models/dashboard.model';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -8,6 +9,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./builder.component.scss']
 })
 export class BuilderComponent implements OnInit, OnDestroy {
+  @Output() cookieModelEmitter: EventEmitter<any> = new EventEmitter();
+
+
   cookieForm: FormGroup;
   dataModelOptions: string[] = [
     'Dashboard',
@@ -49,9 +53,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
       });
   }
 
-  isDataModelSelected() {
-    return this.cookieForm.get('dataModel').value !== null ? true : false;
+  fetchCookiesInContext(cookieModel: any) {
+    this.cookieModelEmitter.emit(cookieModel);
   }
-
-
 }

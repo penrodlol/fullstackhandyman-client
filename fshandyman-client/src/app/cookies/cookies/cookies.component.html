@@ -1,8 +1,8 @@
 <div class="cookies-container">
     <div class="builder-container mat-elevation-z5">
-        <cookie-builder></cookie-builder>
+        <cookie-builder (cookieModelEmitter)='fetchCookieData($event)'></cookie-builder>
     </div>
     <div class="output-container mat-elevation-z5">
-        <cookie-output></cookie-output>
+        <cookie-output [cookieData]='cookieData'></cookie-output>
     </div>
 </div>

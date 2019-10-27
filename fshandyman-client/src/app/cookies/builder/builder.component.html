@@ -16,10 +16,9 @@
                 <mat-icon matPrefix>label</mat-icon>
             </mat-form-field>
             <div [ngSwitch]='checkSelectedDataModelOption()'>               
-                <dashboard-form *ngSwitchCase='0'></dashboard-form>
+                <dashboard-form *ngSwitchCase='0' (dataModelEmitter)='fetchCookiesInContext($event)'></dashboard-form>
                 <span *ngSwitchDefault>No data model provided</span>
             </div>
         </form>
-        <button [disabled]='!isDataModelSelected()' mat-raised-button>Submit</button>
     </div>
 </div>
