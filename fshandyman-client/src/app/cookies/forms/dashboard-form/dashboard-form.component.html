@@ -1,0 +1,36 @@
+<form id='cookie-form-general-styling' [formGroup]='dashboardForm'>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Customer Id</mat-label>
+            <input matInput formControlName='customerId'>
+            <mat-hint>cps-ERX-<b>[customer id]</b>-ERX</mat-hint>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Store Id (optional)</mat-label>
+            <input matInput formControlName='storeId'>
+            <mat-hint>cps-ERX-<b>[customer id]</b>-ERX-<b>[store id]</b></mat-hint>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>UserName</mat-label>
+            <input matInput formControlName='userName'>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-radio-group formControlName='fromPms'>
+            <mat-label>From PMS: </mat-label>
+            <mat-radio-button checked=true value="true">True</mat-radio-button>
+            <mat-radio-button value=false>False</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div>
+        <mat-radio-group formControlName='hideHeader'>
+            <mat-label>Hide Header: </mat-label>
+            <mat-radio-button checked=true value=true>True</mat-radio-button>
+            <mat-radio-button value=false>False</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</form>

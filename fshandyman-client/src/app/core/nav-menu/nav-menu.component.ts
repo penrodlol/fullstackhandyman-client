@@ -22,14 +22,6 @@ export class NavMenuComponent implements OnInit {
     }
   ];
 
-  httpRoutes: ROUTE[] = [
-    {
-      icon: '../../../assets/http.png',
-      route: 'handy-https',
-      title: 'Http'
-    }
-  ];
-
   constructor() { }
 
   ngOnInit() {
