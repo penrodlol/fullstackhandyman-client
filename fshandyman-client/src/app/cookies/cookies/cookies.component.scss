@@ -1,11 +1,21 @@
-.cookies-container {
-    display: flex;
-    .builder-container, .output-container {
+#cookies-container {
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .col1, .col2 {
+        display: flex;
         flex-direction: column;
-        flex: 50;
-        padding: 20px;
-        margin: 15px;
-        background-color: #ffffffef;
+        flex-basis: 100%;
+        padding: 10px;
+        margin: 10px;
+    }
+    .col1 {
+        flex: 1;
+    }
+    .col2 {
+        flex: 3;
         border: solid 1px black;
     }
 }

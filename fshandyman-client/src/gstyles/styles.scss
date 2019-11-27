@@ -1,30 +1,44 @@
-#cookie-builder-form {
-    mat-form-field {
-        width: 300px;
+#cookies-container {
+    .mat-toolbar {
+        background-color: #ccccccad;
+        border: solid 1px #414141;
     }
-    mat-label {
-        color: #04202d;
+    .mat-toolbar-row, .mat-toolbar-single-row {
+        height: 45px;
     }
-    .mat-form-field-appearance-outline .mat-form-field-outline {
-        color: #04202d;
+    .mat-list-base .mat-list-item {
+        height: 40px !important;
+        cursor: pointer;
     }
-    .mat-form-field-outline {
-        background-color: rgb(223, 223, 223);
-    }
-    mat-icon {
-        padding-right: 10px;
+    #cookie-maps-containers-list {
+        background: #eeeeee;
+        border: solid 1px #414141;
+        border-top: none;
+        .mat-list-item:hover {
+            background: #8a8a8a;
+        }
+        h4 {
+            width: 350px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        #add-cookie-map-container {
+            border-top: solid 1px black;
+            background-color: #ccccccad;
+            height: 50px !important;
+        }
+        #add-cookie-map-container:hover {
+            background: #b4b4b4;
+        }
     }
 }
 
-#cookie-form-general-styling {
-    .mat-form-field-flex > .mat-form-field-infix {
-        padding: 0.4em 0px !important;
-    }
-    .mat-form-field-label-wrapper {
-        top: -1.5em;
-    }
-    .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-        transform: translateY(-1.1em) scale(.75);
-        width: 133.33333%;
+#dialog {
+    .mat-icon-button {
+        background-color: transparent;
+        border: none;
+        float: right;
+        transform: translateY(-5px);
     }
 }

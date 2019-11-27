@@ -1,8 +1,10 @@
-<div class="cookies-container">
-    <div class="builder-container mat-elevation-z5">
-        <cookie-builder (cookieModelEmitter)='fetchCookieData($event)'></cookie-builder>
-    </div>
-    <div class="output-container mat-elevation-z5">
-        <cookie-output [cookieData]='cookieData'></cookie-output>
+<div id="cookies-container">
+    <div class="row">
+        <div class="col1">
+            <mat-toolbar class="mat-elevation-z8">Browse Cookie Containers</mat-toolbar>
+            <cookie-containers></cookie-containers>
+        </div>
+        <div class="col2">
+        </div>
     </div>
 </div>

@@ -1,0 +1,12 @@
+<mat-list id="cookie-maps-containers-list">
+    <mat-list-item *ngFor="let cookieMapContainer of cookieMapsContainers"
+        matTooltip='{{cookieMapContainer.name}}'
+        matTooltipPosition='after'>
+        <h4 mat-line>{{cookieMapContainer.name}}</h4>
+        <mat-icon>keyboard_arrow_right</mat-icon>
+    </mat-list-item>
+    <mat-list-item id="add-cookie-map-container" (click)='createCookieMapsContainer()'>
+        Add new container 
+        <mat-icon>add</mat-icon>
+    </mat-list-item>
+</mat-list>

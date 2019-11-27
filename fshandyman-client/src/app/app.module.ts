@@ -6,9 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from 'src/external/style/material/material.module';
 import { CookiesModule } from './cookies/cookies.module';
-import { HttpModule } from './http/http.module';
 import { HomeComponent } from './home/home.component';
 import { CoreModule } from './core/core.module';
+import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import { DialogComponent } from './shared/dialog/dialog.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,10 +24,15 @@ import { CoreModule } from './core/core.module';
     MaterialModule,
     CoreModule,
     CookiesModule,
-    HttpModule,
-    BrowserAnimationsModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'API_BASE_URL', useValue: environment.baseUrl
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
