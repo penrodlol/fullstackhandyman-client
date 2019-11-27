@@ -3,14 +3,13 @@ import { MaterialModule } from '../../external/style/material/material.module';
 import { DialogService } from './dialog/dialog.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DialogFormComponent } from './dialog/dialog-form/dialog-form.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateCookieContainerFormComponent } from '../cookies/create-cookie-container-form/create-cookie-container-form.component';
 
 @NgModule({
     declarations: [
-        DialogComponent,
-        DialogFormComponent
+        DialogComponent
     ],
     imports: [
         CommonModule,
@@ -23,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         DialogService
     ],
     entryComponents: [
-        DialogComponent
+        DialogComponent,
+        CreateCookieContainerFormComponent
     ]
 })
 export class SharedModule {}

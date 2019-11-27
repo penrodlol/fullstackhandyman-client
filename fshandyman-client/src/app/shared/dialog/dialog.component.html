@@ -8,7 +8,7 @@
     </h1>
     <div mat-dialog-content>
         <p *ngIf="data.message">{{data.message}}</p>
-        <dialog-form *ngIf="data.form"></dialog-form>
+        <ng-template #dialogContent></ng-template>
     </div>
     <div class="action-buttons" mat-dialog-actions align='end'>
         <button mat-button [mat-dialog-close]='true'>{{data.footerButton1}}</button>
