@@ -1,0 +1,17 @@
+<div id="dialog">
+    <h1 mat-dialog-title [ngStyle]="{'background-color': data.style.color}">
+        <i class='{{data.style.icon}}'></i>
+        {{data.header}}
+        <button mat-icon-button (click)='close()'>
+            <mat-icon>close</mat-icon>
+        </button>
+    </h1>
+    <div mat-dialog-content>
+        <p *ngIf="data.message">{{data.message}}</p>
+        <dialog-form *ngIf="data.form"></dialog-form>
+    </div>
+    <div class="action-buttons" mat-dialog-actions align='end'>
+        <button mat-button [mat-dialog-close]='true'>{{data.footerButton1}}</button>
+        <button *ngIf="data.footerButton2" mat-button (click)='close()'>{{data.footerButton2}}</button>
+    </div>
+</div>
