@@ -10,8 +10,12 @@
         <p *ngIf="data.message">{{data.message}}</p>
         <ng-template #dialogContent></ng-template>
     </div>
+    <mat-divider></mat-divider>
     <div class="action-buttons" mat-dialog-actions align='end'>
-        <button mat-button [mat-dialog-close]='true'>{{data.footerButton1}}</button>
+        <button mat-button
+            [mat-dialog-close]='dialogSubmissionData'
+            [disabled]='!isValidForm'
+            [ngClass]="{'disabled': !isValidForm}">{{data.footerButton1}}</button>
         <button *ngIf="data.footerButton2" mat-button (click)='close()'>{{data.footerButton2}}</button>
     </div>
 </div>

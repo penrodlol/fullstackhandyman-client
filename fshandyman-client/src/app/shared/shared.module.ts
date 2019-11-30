@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CreateCookieContainerFormComponent } from '../cookies/create-cookie-container-form/create-cookie-container-form.component';
 
 @NgModule({
     declarations: [
@@ -22,8 +21,7 @@ import { CreateCookieContainerFormComponent } from '../cookies/create-cookie-con
         DialogService
     ],
     entryComponents: [
-        DialogComponent,
-        CreateCookieContainerFormComponent
+        DialogComponent
     ]
 })
 export class SharedModule {}

@@ -10,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { CoreModule } from './core/core.module';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-import { DialogComponent } from './shared/dialog/dialog.component';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({

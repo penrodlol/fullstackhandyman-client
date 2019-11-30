@@ -1,0 +1,14 @@
+<form id="create-cookie-container-form" [formGroup]='createContainerForm'>
+    <mat-form-field appearance="outline">
+        <mat-label>Add a container name</mat-label>
+        <input matInput formControlName='name'>
+        <mat-hint>
+            <span *ngIf="validNameLength; else invalidNameLength">
+                Remaining characters: <span class="current-name-length">{{currentNameLength}}</span>
+            </span>
+            <ng-template #invalidNameLength>
+                <span class="invalid-name">Invalid name!</span>
+            </ng-template>
+        </mat-hint>
+    </mat-form-field>
+</form>
