@@ -1,5 +1,5 @@
 <mat-list id="cookie-maps-containers-list">
-    <mat-list-item *ngFor="let cookieMapContainer of cookieMapsContainers"
+    <mat-list-item *ngFor="let cookieMapContainer of cookieMapsContainers | async"
         matTooltip='{{cookieMapContainer.name}}'
         matTooltipPosition='after'>
         <h4 mat-line>{{cookieMapContainer.name}}</h4>

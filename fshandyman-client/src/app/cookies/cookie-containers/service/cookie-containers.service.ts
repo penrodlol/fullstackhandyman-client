@@ -1,48 +1,36 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
-import { shareReplay, switchMapTo, switchMap, takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { shareReplay, switchMap, takeUntil} from 'rxjs/operators';
 import { CookieMapsContainers } from '../models/cookie-maps-containers.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CookieContainersService {
+  cookieUrl = '/com/fullstackhandyman/api/cookie';
 
-  private cookieMapsContainers$: Observable<CookieMapsContainers[]>;
-  private reload$ = new Subject<void>();
+  private currentCookieMapsContainers: Observable<CookieMapsContainers[]>;
 
   constructor(@Inject('API_BASE_URL') private baseUrl: string, private http: HttpClient) { }
 
-  get cookieMapsContainers(): Observable<CookieMapsContainers[]> {
-    return !this.cookieMapsContainers$
-    ? this.cookieMapsContainers$ = this.getCookieMapsContainers().pipe(
-      takeUntil(this.reload$),
-      shareReplay(1)
-    )
-    : this.cookieMapsContainers$;
+  get cookieMapsContainers() {
+    return !this.currentCookieMapsContainers
+    ? this.getCookieMapsContainers().pipe(shareReplay(1))
+    : this.currentCookieMapsContainers;
   }
-
-  reloadCookieMapsContainers() {
-    this.reload$.next();
-    this.cookieMapsContainers$ = null;
-  }
-
+  
   private getCookieMapsContainers(): Observable<CookieMapsContainers[]> {
-    const url = `${this.baseUrl}/com/fullstackhandyman/api/cookie/containers`;
+    const url = `${this.baseUrl}/${this.cookieUrl}/containers`;
     return this.http.get<CookieMapsContainers[]>(url);
   }
 
-  createContainer(containerName: string): Observable<any> {
-    const httpHeaders: HttpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json',
-      name: containerName
-    });
+  createContainer(containerName: string): Observable<CookieMapsContainers> {
     const url = `${this.baseUrl}/com/fullstackhandyman/api/cookie/create/container`;
     return this.http.post<any>(url, null, {
-      headers: httpHeaders,
-      observe: 'response'
+      headers: new HttpHeaders({
+        name: containerName
+      })
     });
-    return null;
   }
 }

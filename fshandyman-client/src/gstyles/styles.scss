@@ -42,3 +42,9 @@
         transform: translateY(-5px);
     }
 }
+
+#create-cookie-container-form {
+    .mat-form-field {
+        width: 90%;
+    }
+}
