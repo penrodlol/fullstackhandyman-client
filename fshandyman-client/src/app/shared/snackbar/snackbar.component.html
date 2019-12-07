@@ -1,0 +1,11 @@
+<div class="snackbar-container" [ngClass]="{'error': !data.status}">
+    <span>{{data.text}}
+        <b *ngIf="data.actionText"
+            (click)='snackbarRef.dismissWithAction()'>
+            {{data.actionText}}
+        </b>
+    </span>
+    <div id="snackbar-actions">
+        <button mat-icon-button (click)='snackbarRef.dismiss()'><mat-icon>close</mat-icon></button>
+    </div>
+</div>

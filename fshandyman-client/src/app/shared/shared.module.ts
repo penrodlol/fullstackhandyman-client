@@ -5,10 +5,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SnackbarService } from './snackbar/snackbar.service';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 @NgModule({
     declarations: [
-        DialogComponent
+        DialogComponent,
+        SnackbarComponent
     ],
     imports: [
         CommonModule,
@@ -18,10 +21,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     ],
     exports: [],
     providers: [
-        DialogService
+        DialogService,
+        SnackbarService
     ],
     entryComponents: [
-        DialogComponent
+        DialogComponent,
+        SnackbarComponent
     ]
 })
 export class SharedModule {}

@@ -1,0 +1,37 @@
+.snackbar-container {
+    padding: 10px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+        font-size: 18px;
+        color: #000000;
+        flex: 0 0 90%;
+    }
+    b:hover {
+        color: #808080;
+        cursor: pointer;
+    }
+}
+
+.error {
+    border: solid 0.5px #ff0000;
+    border-radius: 5px;
+}
+
+#snackbar-actions {
+    display: inline;
+    flex: 0 0 10%;
+    button {
+        float: right;
+    }
+}
+
+::ng-deep {
+    .mat-snack-bar-container {
+        background-color: rgb(223, 223, 223);
+        border-radius: 5px;
+        padding: 0px;
+        min-width: 400px;
+    }
+}
