@@ -32,6 +32,18 @@
             background: #b4b4b4;
         }
     }
+    #cookie-templates-list {
+        background: #c5c5c5;
+        border: solid 1px #414141;
+        border-top: none;
+        padding-top: 0px;
+        .mat-list-item:hover {
+            background: #b4b4b4;
+        }
+        .mat-icon {
+            padding-left: 5px;
+        }
+    }
 }
 
 #dialog {
