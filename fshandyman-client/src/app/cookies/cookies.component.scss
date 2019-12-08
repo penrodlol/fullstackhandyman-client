@@ -21,4 +21,12 @@
     .cookie-templates-container {
         margin-bottom: 15px;
     }
+    .cookie-templates-container, .cookie-containers-container {
+        .spacer {
+            flex: 1 1 auto;
+        }
+        mat-icon:hover {
+            cursor: pointer;
+        }
+    }
 }

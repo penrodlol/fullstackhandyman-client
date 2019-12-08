@@ -2,11 +2,23 @@
     <div class="row">
         <div class="col1">
             <div class="cookie-templates-container">
-                <mat-toolbar class="primary-background mat-elevation-z8">Cookie Form Templates</mat-toolbar>
+                <mat-toolbar class="primary-background mat-elevation-z8">
+                    Cookie Form Templates
+                    <span class="spacer"></span>
+                    <mat-icon matTooltip='Cookie templates are the forms used to create cookies. They are
+                        universily shared across cookie containers.' 
+                        matTooltipPosition='after'>info</mat-icon>
+                </mat-toolbar>
                 <cookie-templates></cookie-templates>
             </div>
             <div class="cookie-containers-container">
-                <mat-toolbar class="primary-background mat-elevation-z8">Browse Cookie Containers</mat-toolbar>
+                <mat-toolbar class="primary-background mat-elevation-z8">
+                    Browse Cookie Containers
+                    <span class="spacer"></span>
+                    <mat-icon matTooltip='Cookie containers hold all cookies created under their respective domain.
+                        Each cookie container name MUST BE UNIQUE.'
+                        matTooltipPosition='after'>info</mat-icon>
+                </mat-toolbar>
                 <cookie-containers></cookie-containers>
             </div>
         </div>
