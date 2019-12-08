@@ -45,11 +45,11 @@ export class CookieContainersComponent implements OnInit, OnDestroy {
 
         if (!recoredExists) {
           this.cookieContainersService.createContainer(result.name).subscribe((cookieMapContainer: CookieMapsContainers) => {
-            this.snackbarService.openSnackbar({ text: `${cookieMapContainer.name} created!`, status: true });
+            this.snackbarService.openSnackbar({ text: `${cookieMapContainer.name} created!` });
             this.appendCookieMapContainer(cookieMapContainer);
           });
         } else {
-          this.snackbarService.openSnackbar({ text: `${result.name} already exists.`, status: false, actionText:'Try again?' })
+          this.snackbarService.openSnackbar({ text: `${result.name} already exists.`, actionText:'Try again?' })
             .subscribe(event => {
               if (event.dismissedByAction) {
                 this.createCookieMapsContainer();

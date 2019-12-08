@@ -8,7 +8,7 @@ export class SnackbarService {
 
   constructor(public snackbar: MatSnackBar) { }
 
-  openSnackbar(data: { text: string, status: boolean, actionText?: string }, dur?: number): Observable<MatSnackBarDismiss> {
+  openSnackbar(data: { text: string, actionText?: string }, dur?: number): Observable<MatSnackBarDismiss> {
     return this.snackbar.openFromComponent(SnackbarComponent, {
       data: data,
       duration: data.actionText ? null : (dur ? dur * 1000 : 3000),

@@ -1,12 +1,12 @@
 <div class="nav-menu-container">
-    <mat-toolbar class="nav-menu-toolbar mat-elevation-z8">
+    <mat-toolbar class="nav-menu-toolbar mat-elevation-z8 primary-background">
         <button mat-icon-button (click)="navmenu.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
         <h1 class="title" routerLink='/'>FullStack Handyman</h1>
     </mat-toolbar>
     <mat-sidenav-container>
-        <mat-sidenav #navmenu mode='over' [fixedInViewport]="true" fixedTopGap="75">
+        <mat-sidenav class="standard-background" #navmenu mode='over' [fixedInViewport]="true" fixedTopGap="75">
             <mat-nav-list>
                 <a *ngFor="let cookieRoute of cookieRoutes" mat-list-item (click)='navmenu.close()'
                     [routerLink]='[cookieRoute.route]'>

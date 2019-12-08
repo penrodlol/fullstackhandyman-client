@@ -1,4 +1,4 @@
-<div class="snackbar-container" [ngClass]="{'error': !data.status}">
+<div class="snackbar-container">
     <span>{{data.text}}
         <b *ngIf="data.actionText"
             (click)='snackbarRef.dismissWithAction()'>

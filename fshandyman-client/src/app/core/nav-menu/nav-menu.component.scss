@@ -9,7 +9,6 @@ mat-sidenav-container {
 mat-sidenav {
     width: 300px;
     left: 0;
-    background-color: #dbdbdb;
     color: #000000;
     border: solid 0.5px #505050;
 }
@@ -19,9 +18,8 @@ mat-sidenav-content {
 }
 
 .nav-menu-toolbar {
-    background-color: #c7c7c7;
     color: #000000;
-    border: solid 0.5px #505050;
+    border: solid 0.5px #000000;
     border-radius: 10px;
 }
 

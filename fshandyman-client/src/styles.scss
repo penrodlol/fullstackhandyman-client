@@ -1,8 +1,9 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~@angular/material/theming';
 @import 'gstyles/styles';
+@import 'gstyles/colors';
 
-$custom-typography: mat-typography-config($font-family: '"Kreon", serif;');
+$custom-typography: mat-typography-config($font-family: '"Nanum Gothic", sans-serif;');
 @include mat-core($custom-typography);
 
 $custom-primary: mat-palette($mat-blue);
@@ -11,5 +12,6 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent);
 @include angular-material-theme($custom-theme);
 
 body {
-    background-color: rgba(32, 32, 32, 0.568);
+    background-color: rgb(46, 46, 46);
+    letter-spacing: 1px;
 }
