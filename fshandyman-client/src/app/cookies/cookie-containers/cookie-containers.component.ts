@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CookieContainersService } from './service/cookie-containers.service';
 import { CookieMapsContainers } from './models/cookie-maps-containers.model';
 import { DialogService } from '../../shared/dialog/dialog.service';
 import { CreateCookieContainerComponent } from './create-cookie-container/create-cookie-container.component';
-import { from, Subject, BehaviorSubject, Observable, merge } from 'rxjs';
-import { filter, pluck, defaultIfEmpty, take, mergeMap, flatMap, concatMap, map, tap, toArray } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
   templateUrl: './cookie-containers.component.html',
   styleUrls: ['./cookie-containers.component.scss']
 })
-export class CookieContainersComponent implements OnInit, OnDestroy {
+export class CookieContainersComponent implements OnInit {
 
   cookieMapsContainers: Observable<CookieMapsContainers[]>;
 
@@ -22,10 +22,6 @@ export class CookieContainersComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.cookieMapsContainers = this.fetchCookieContainers();
-  }
-
-  ngOnDestroy(): void {
-    this.cookieMapsContainers.subscribe().unsubscribe();
   }
 
   fetchCookieContainers(): Observable<CookieMapsContainers[]> {
