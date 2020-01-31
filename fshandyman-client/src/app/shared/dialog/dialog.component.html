@@ -12,7 +12,7 @@
     </div>
     <mat-divider></mat-divider>
     <div class="action-buttons standard-background" mat-dialog-actions align='end'>
-        <button [ngClass]="!isValidForm ? 'light-background disabled' : 'secondary-background'"
+        <button [ngClass]="!isValidForm ? 'light-background disabled' : 'primary-background'"
             mat-button
             [mat-dialog-close]='dialogSubmissionData'
             [disabled]='!isValidForm'>{{data.footerButton1}}</button>

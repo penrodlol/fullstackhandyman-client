@@ -39,7 +39,7 @@ export class DialogService {
     switch (style) {
       case 'component':
         this.dialogData.component = component;
-        this.dialogData.style.color = '#ffd000';
+        this.dialogData.style.color = '#8e4dff';
         break;
     }
   }

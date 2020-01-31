@@ -12,6 +12,6 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent);
 @include angular-material-theme($custom-theme);
 
 body {
-    background-color: rgb(46, 46, 46);
+    background-color: rgb(31, 31, 31);
     letter-spacing: 1px;
 }

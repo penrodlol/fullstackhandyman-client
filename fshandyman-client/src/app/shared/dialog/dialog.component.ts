@@ -54,12 +54,11 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   validateFormData() {
-    const isValid = 'VALID';
     of(Object.entries(this.componentRef.instance)).pipe(
       map(property => property.filter(data => data[1] instanceof FormGroup)[0][1])
     ).subscribe((result: FormGroup) => {
       result.statusChanges.subscribe(status => {
-          if (status === isValid) {
+          if (status === 'VALID') {
             this.isValidForm = true;
             this.dialogSubmissionData = result.value;
           } else {
