@@ -1,14 +1,32 @@
 <form id="create-cookie-container-form" [formGroup]='createContainerForm'>
-    <mat-form-field appearance="outline">
-        <mat-label>Add a container name</mat-label>
-        <input matInput formControlName='name'>
-        <mat-hint>
-            <span *ngIf="validNameLength; else invalidNameLength">
-                Remaining characters: <span class="current-name-length">{{currentNameLength}}</span>
-            </span>
-            <ng-template #invalidNameLength>
-                <span class="invalid-name">Invalid name!</span>
-            </ng-template>
-        </mat-hint>
-    </mat-form-field>
+    <div class="row">
+        <div class="col1">
+            <mat-form-field appearance="outline">
+                <mat-label>Add a container name</mat-label>
+                <input matInput formControlName='name'>
+                <mat-hint>
+                    <span *ngIf="validNameLength; else invalidNameLength">
+                        Remaining characters: <span class="current-length">{{currentNameLength}}</span>
+                    </span>
+                    <ng-template #invalidNameLength>
+                        <span class="invalid">Invalid name!</span>
+                    </ng-template>
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col2">
+            <mat-form-field appearance="outline">
+                <mat-label>Add a tag</mat-label>
+                <input matInput formControlName='tag'>
+                <mat-hint>
+                    <span *ngIf="validTagLength; else invalidTagLength">
+                        Remaining characters: <span class="current-length">{{currentTagLength}}</span>
+                    </span>
+                    <ng-template #invalidTagLength>
+                        <span class="invalid">Invalid tag!</span>
+                    </ng-template>
+                </mat-hint>
+            </mat-form-field>
+        </div>
+    </div>
 </form>

@@ -1,7 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~@angular/material/theming';
-@import 'gstyles/styles';
-@import 'gstyles/colors';
+@import 'global-styles/styles';
+@import 'global-styles/colors';
 
 $custom-typography: mat-typography-config($font-family: '"Nanum Gothic", sans-serif;');
 @include mat-core($custom-typography);

@@ -31,10 +31,13 @@ export class CookieContainersService {
     this.cookieMapsContainersSource.next(newCookieMapsContainers);
   }
 
-  createContainer(containerName: string): Observable<CookieMapsContainers> {
+  createContainer(containerName: string, containerTag: string): Observable<CookieMapsContainers> {
     const url = `${this.cookieUrl}/create/container`;
     return this.http.post<any>(url, null, {
-      headers: new HttpHeaders({ name: containerName })
+      headers: new HttpHeaders({
+        name: containerName,
+        tag: containerTag
+      })
     });
   }
 }

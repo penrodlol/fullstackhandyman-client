@@ -12,7 +12,7 @@ const cookieRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [CookiesComponent, CookieContainersComponent, CreateCookieContainerComponent ],
+  declarations: [CookiesComponent, CookieContainersComponent, CreateCookieContainerComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(cookieRoutes),

@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/gstyles/colors.scss"
+              "src/global-styles/colors.scss"
             ],
             "scripts": []
           },

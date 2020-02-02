@@ -1,8 +1,23 @@
 form {
     width: 100%;
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        .col1, .col2 {
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .col1 {
+            flex: 2;
+        }
+        .col2 {
+            flex: 1;
+        }
+    }
 }
 
-.current-name-length, .invalid-name {
+.current-length, .invalid, .invalid {
     color: #8e4dff;
     font-weight: bold;
 }

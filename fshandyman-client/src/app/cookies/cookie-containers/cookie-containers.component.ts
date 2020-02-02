@@ -3,8 +3,9 @@ import { CookieContainersService } from './service/cookie-containers.service';
 import { CookieMapsContainers } from './models/cookie-maps-containers.model';
 import { DialogService } from '../../shared/dialog/dialog.service';
 import { CreateCookieContainerComponent } from './create-cookie-container/create-cookie-container.component';
-import { Observable } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'cookie-containers',
@@ -27,8 +28,10 @@ export class CookieContainersComponent implements OnInit {
 
   createCookieMapsContainer() {
     this.dialogService.showComponentDialog('Create Container', 'Create', CreateCookieContainerComponent, 'Cancel')
-      .afterClosed().subscribe((result: any) => {
-        this.cookieContainersService.createContainer(result.name).subscribe(
+      .afterClosed()
+      .pipe(takeWhile(result => result != null))
+      .subscribe((result: any) => {
+        this.cookieContainersService.createContainer(result.name, result.tag).subscribe(
           (newCookieMapsContainer: CookieMapsContainers) => {
             this.snackbarService.openSnackbar({ text: `${newCookieMapsContainer.name} created!` });
             this.cookieContainersService.refreshCookieMapsContainers(newCookieMapsContainer);
