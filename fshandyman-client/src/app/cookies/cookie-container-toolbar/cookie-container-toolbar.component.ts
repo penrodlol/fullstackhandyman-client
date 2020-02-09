@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CookieMapsContainers } from '../cookie-containers/models/cookie-maps-containers.model';
 import { CookieContainersService } from '../cookie-containers/service/cookie-containers.service';
 import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
+import { DialogService } from 'src/app/shared/dialog/dialog.service';
 
 enum CookieMapsContainerProps {
   NAME = "name",
@@ -24,7 +25,8 @@ export class CookieContainerToolbarComponent implements OnInit {
 
   constructor(
     private cookieContainersService: CookieContainersService,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private dialogService: DialogService
   ) { }
 
   ngOnInit() { }
@@ -60,5 +62,21 @@ export class CookieContainerToolbarComponent implements OnInit {
         this.cookieMapsContainer.tag = currentContainerTag;
       }
     );
+  }
+
+  removeContainer() {
+    this.dialogService.showWarningDialog('Warning!',
+      `Are you sure you want to remove '${this.cookieMapsContainer.name}' permanently. All cookies for this container will be lost.`,
+      'Yes', 'No').afterClosed().subscribe((didRemoveContainer: Boolean) => {
+        if (didRemoveContainer) {
+          this.cookieContainersService.removeContainer(this.cookieMapsContainer.containerNum).subscribe(
+            _ => {
+              this.snackbarService.openSnackbar( {text: `${this.cookieMapsContainer.name} has been successfully removed.`} );
+              this.cookieMapsContainer = null;
+            },
+            ex => this.snackbarService.openSnackbar({ text: ex.error.reason })
+          );
+        }
+      });
   }
 }

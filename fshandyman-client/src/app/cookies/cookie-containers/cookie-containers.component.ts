@@ -24,7 +24,7 @@ export class CookieContainersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cookieContainersService.getCookieMapsContainers();
+    this.cookieContainersService.getContainers();
   }
 
   createCookieMapsContainer() {
@@ -35,7 +35,6 @@ export class CookieContainersComponent implements OnInit {
         this.cookieContainersService.createContainer(result.name, result.tag).subscribe(
           (newCookieMapsContainer: CookieMapsContainers) => {
             this.snackbarService.openSnackbar({ text: `${newCookieMapsContainer.name} created!` });
-            this.cookieContainersService.appendCookieMapsContainer(newCookieMapsContainer);
           },
           ex => {
             this.snackbarService.openSnackbar({ text: ex.error.reason, actionText: 'Try again?' }).subscribe(event => {

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, from, } from 'rxjs';
 import { CookieMapsContainers } from '../models/cookie-maps-containers.model';
 import { UrlBuilderService } from 'src/app/shared/url/url-builder.service';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,14 @@ export class CookieContainersService {
     this.cookieUrl = this.urlBuilderService.buildUrl('cookie');
   }
   
-  getCookieMapsContainers(): void {
+  getContainers(): void {
     const url = `${this.cookieUrl}/containers`;
     this.http.get<CookieMapsContainers[]>(url).subscribe(cookieMapsContainers => {
       this.cookieMapsContainersSource.next(cookieMapsContainers);
     });
   }
 
-  appendCookieMapsContainer(cookieMapsContainer: CookieMapsContainers) {
+  appendContainer(cookieMapsContainer: CookieMapsContainers) {
     const currentCookieMapsContainers = this.cookieMapsContainersSource.getValue();
     const newCookieMapsContainers = [ ...currentCookieMapsContainers, cookieMapsContainer];
     this.cookieMapsContainersSource.next(newCookieMapsContainers);
@@ -37,11 +38,29 @@ export class CookieContainersService {
         name: containerName,
         tag: containerTag
       })
-    });
+    }).pipe(
+      tap(container => this.appendContainer(container))
+    );
   }
 
   editContainer(cookieMapsContainer: CookieMapsContainers) {
     const url = `${this.cookieUrl}/edit/container`;
     return this.http.put<CookieMapsContainers>(url, cookieMapsContainer);
+  }
+
+  removeContainer(containerNum: number) {
+    const url = `${this.cookieUrl}/delete/container`;
+    return this.http.delete<number>(url, {headers: new HttpHeaders({
+      'containerNum': containerNum.toString()
+      })
+    }).pipe(
+      tap((containerNum: number) => {
+        let newContainers: CookieMapsContainers[];
+        this.cookieMapsContainersSource.pipe(
+          map(containers => containers.filter(container => container.containerNum !== containerNum))
+        ).subscribe(res => newContainers = res);
+        this.cookieMapsContainersSource.next(newContainers);
+      })
+    );
   }
 }
