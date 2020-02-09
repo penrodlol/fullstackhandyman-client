@@ -18,23 +18,4 @@ export class CookiesComponent implements OnInit {
   getCookieMapsContainer(cookieMapsContainer: CookieMapsContainers) {
     this.cookieMapsContainer = cookieMapsContainer;
   }
-
-  editContainerName() {
-
-  }
-
-  editContainerTag() {
-
-  }
-
-  removeContainer() {
-    this.dialogService.showWarningDialog('Warning!',
-    `Are you sure you want to remove '${this.cookieMapsContainer.name} (${this.cookieMapsContainer.tag})' permanently? All contents pertaining to this container will be lost.`, 
-    'Yes', 'No')
-      .afterClosed()
-      .subscribe((requestedToRemove: Boolean) => {
-        
-      });
-  }
-
 }

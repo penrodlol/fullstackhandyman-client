@@ -21,10 +21,4 @@
         .mat-toolbar { background-color: $primary; }
         mat-icon:hover { cursor: pointer; }
     }
-    #cookie-maps-container {
-        .mat-toolbar { background-color: $primary; }
-        #edit-container-name, #edit-container-tag { cursor: pointer; }
-        #remove-container { background-color: $light; }
-    }
-    .edit-container, .remove-container { margin-left: 10px; }
 }

@@ -39,4 +39,9 @@ export class CookieContainersService {
       })
     });
   }
+
+  editContainer(cookieMapsContainer: CookieMapsContainers) {
+    const url = `${this.cookieUrl}/edit/container`;
+    return this.http.put<CookieMapsContainers>(url, cookieMapsContainer);
+  }
 }

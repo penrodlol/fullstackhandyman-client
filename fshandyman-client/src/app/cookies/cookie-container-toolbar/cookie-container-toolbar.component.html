@@ -1,0 +1,42 @@
+<mat-toolbar class="mat-elevation-z8">
+    <ng-container *ngIf="cookieMapsContainer">
+        <ng-container *ngIf="!isEditingName; else editingName">
+            <b
+                #name
+                id="edit-container-name"
+                matTooltip='Edit name'
+                matTooltipPosition='above'
+                (click)='editContainer("name")'>
+                {{cookieMapsContainer.name}}
+            </b>
+        </ng-container>
+        <ng-template #editingName>
+            <inline-edit
+                [placeholder]=EDIT_CONTAINER_NAME_PLACEHOLDER
+                (resultEmitter)='updateContainer($event,"name")'>
+            </inline-edit>
+        </ng-template>
+        <mat-divider [vertical]="true"></mat-divider>
+        <ng-container *ngIf="!isEditingTag; else editingTag">
+            <span
+                id="edit-container-tag"
+                matTooltip='Edit tag'
+                matTooltipPosition='above'
+                (click)='editContainer("tag")'>
+                {{cookieMapsContainer.tag}}
+            </span>
+        </ng-container>
+        <ng-template #editingTag>
+            <inline-edit
+                [placeholder]=EDIT_CONTAINER_TAG_PLACEHOLDER
+                (resultEmitter)='updateContainer($event,"tag")'>
+            </inline-edit>
+        </ng-template>
+        <span class="spacer"></span>
+        <button
+            id="remove-container"
+            mat-raised-button>
+            Remove
+        </button>
+    </ng-container>
+</mat-toolbar>

@@ -1,0 +1,12 @@
+@import '../../../base-styles/styles_base.scss';
+
+input {
+    background: transparent;
+    border: $border-standard;
+    border-radius: 5px;
+    height: 30px;
+    padding: 5px;
+    font-size: 18px;
+}
+input:focus{ outline: none; }
+input::placeholder { color: #333333; }

@@ -8,12 +8,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SnackbarService } from './snackbar/snackbar.service';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { InlineEditComponent } from './inline-edit/inline-edit.component';
+import { InlineDirective } from './inline-edit/inline.directive';
 
 @NgModule({
     declarations: [
         DialogComponent,
         SnackbarComponent,
-        InlineEditComponent
+        InlineEditComponent,
+        InlineDirective
     ],
     imports: [
         CommonModule,

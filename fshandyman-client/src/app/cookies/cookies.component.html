@@ -16,32 +16,9 @@
         </div>
         <div class="col2">
             <div id="cookie-maps-container">
-                <mat-toolbar class="mat-elevation-z8">
-                    <ng-container *ngIf="cookieMapsContainer">
-                        <b
-                            id="edit-container-name"
-                            matTooltip='Edit name'
-                            matTooltipPosition='above'
-                            (click)='editContainerName()'>
-                            {{cookieMapsContainer.name}}
-                        </b>
-                        <mat-divider [vertical]="true"></mat-divider>
-                        <span
-                            id="edit-container-tag"
-                            matTooltip='Edit tag'
-                            matTooltipPosition='above'
-                            (click)='editContainerTag()'>
-                            {{cookieMapsContainer.tag}}
-                        </span>
-                        <span class="spacer"></span>
-                        <button
-                            id="remove-container"
-                            mat-raised-button
-                            (click)='removeContainer()'>
-                            Remove
-                        </button>
-                    </ng-container>
-                </mat-toolbar>
+                <cookie-container-toolbar
+                    [cookieMapsContainer]='cookieMapsContainer'>
+                </cookie-container-toolbar>
             </div>
         </div>
     </div>

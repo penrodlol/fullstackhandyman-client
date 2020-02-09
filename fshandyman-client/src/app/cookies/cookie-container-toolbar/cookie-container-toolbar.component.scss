@@ -1,0 +1,5 @@
+@import '../../../base-styles/colors_base.scss';
+
+.mat-toolbar { background-color: $primary; }
+#edit-container-name, #edit-container-tag { cursor: pointer; }
+#remove-container { background-color: $light; }
