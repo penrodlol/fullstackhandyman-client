@@ -10,7 +10,7 @@ import { DialogService } from '../shared/dialog/dialog.service';
 export class CookiesComponent implements OnInit {
   cookieMapsContainer: CookieMapsContainers;
 
-  constructor(private dialogService: DialogService) { }
+  constructor() { }
 
   ngOnInit() {
   }

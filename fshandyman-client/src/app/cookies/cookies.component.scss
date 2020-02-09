@@ -21,4 +21,15 @@
         .mat-toolbar { background-color: $primary; }
         mat-icon:hover { cursor: pointer; }
     }
+    #cookies-container {
+        height: 64vh;
+        background-color: $standard;
+        display: flex;
+        flex-wrap: wrap;
+        .sub-col1 {
+            flex: 1; border:
+            $border-standard;
+            background-color: $standard-deep; }
+        .sub-col2 { flex: 3; border: $border-standard; }
+    }
 }

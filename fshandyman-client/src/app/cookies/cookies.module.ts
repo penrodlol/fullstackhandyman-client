@@ -8,13 +8,14 @@ import { CookieContainersComponent } from './cookie-containers/cookie-containers
 import { CreateCookieContainerComponent } from './cookie-containers/create-cookie-container/create-cookie-container.component';
 import { CookieContainerToolbarComponent } from './cookie-container-toolbar/cookie-container-toolbar.component';
 import { SharedModule } from '../shared/shared.module';
+import { CookieMapsComponent } from './cookie-maps/cookie-maps.component';
 
 const cookieRoutes: Routes = [
   { path: '', component: CookiesComponent }
 ];
 
 @NgModule({
-  declarations: [CookiesComponent, CookieContainersComponent, CreateCookieContainerComponent, CookieContainerToolbarComponent],
+  declarations: [CookiesComponent, CookieContainersComponent, CreateCookieContainerComponent, CookieContainerToolbarComponent, CookieMapsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(cookieRoutes),
