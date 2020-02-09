@@ -15,10 +15,16 @@
             </div>
         </div>
         <div class="col2">
-            <div id="cookie-maps-container">
-                <cookie-container-toolbar
-                    [cookieMapsContainer]='cookieMapsContainer'>
-                </cookie-container-toolbar>
+            <cookie-container-toolbar [cookieMapsContainer]='cookieMapsContainer'></cookie-container-toolbar>
+            <div id="cookies-container">
+                <div class="sub-col1">
+                    <cookie-maps
+                        *ngIf="cookieMapsContainer"
+                        [containerNum]='cookieMapsContainer.containerNum'>
+                    </cookie-maps>
+                </div>
+                <div class="sub-col2">
+                </div>
             </div>
         </div>
     </div>
