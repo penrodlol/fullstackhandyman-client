@@ -1,18 +1,48 @@
 <div id="cookies-container">
     <div class="row">
         <div class="col1">
-            <div class="cookie-containers-container">
-                <mat-toolbar class="primary-background mat-elevation-z8">
+            <div id="cookie-containers-container">
+                <mat-toolbar class="mat-elevation-z8">
                     <b>Browse Cookie Containers</b>
                     <span class="spacer"></span>
-                    <mat-icon matTooltip='Cookie containers hold all cookies created under their respective domain.
-                        Each cookie container name MUST BE UNIQUE.'
-                        matTooltipPosition='after'>info</mat-icon>
+                    <mat-icon
+                        matTooltip='Cookie containers hold all cookies created under their respective domain. Each cookie container name must be unique.'
+                        matTooltipPosition='after'>
+                        info
+                    </mat-icon>
                 </mat-toolbar>
-                <cookie-containers></cookie-containers>
+                <cookie-containers (cookieMapsContainersSelection)='getCookieMapsContainer($event)'></cookie-containers>
             </div>
         </div>
         <div class="col2">
+            <div id="cookie-maps-container">
+                <mat-toolbar class="mat-elevation-z8">
+                    <ng-container *ngIf="cookieMapsContainer">
+                        <b
+                            id="edit-container-name"
+                            matTooltip='Edit name'
+                            matTooltipPosition='above'
+                            (click)='editContainerName()'>
+                            {{cookieMapsContainer.name}}
+                        </b>
+                        <mat-divider [vertical]="true"></mat-divider>
+                        <span
+                            id="edit-container-tag"
+                            matTooltip='Edit tag'
+                            matTooltipPosition='above'
+                            (click)='editContainerTag()'>
+                            {{cookieMapsContainer.tag}}
+                        </span>
+                        <span class="spacer"></span>
+                        <button
+                            id="remove-container"
+                            mat-raised-button
+                            (click)='removeContainer()'>
+                            Remove
+                        </button>
+                    </ng-container>
+                </mat-toolbar>
+            </div>
         </div>
     </div>
 </div>

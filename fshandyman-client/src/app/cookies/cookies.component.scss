@@ -1,4 +1,8 @@
+@import '../../base-styles/colors_base.scss';
+@import '../../base-styles/styles_base.scss';
+
 #cookies-container {
+    .mat-toolbar-row, .mat-toolbar-single-row { height: 50px; }
     .row {
         display: flex;
         flex-wrap: wrap;
@@ -11,19 +15,16 @@
         padding: 10px;
         margin: 10px;
     }
-    .col1 {
-        flex: 1;
+    .col1 { flex: 1; }
+    .col2 { flex: 3; }
+    #cookie-containers-container {
+        .mat-toolbar { background-color: $primary; }
+        mat-icon:hover { cursor: pointer; }
     }
-    .col2 {
-        flex: 3;
-        border: solid 1px black;
+    #cookie-maps-container {
+        .mat-toolbar { background-color: $primary; }
+        #edit-container-name, #edit-container-tag { cursor: pointer; }
+        #remove-container { background-color: $light; }
     }
-    .cookie-containers-container {
-        .spacer {
-            flex: 1 1 auto;
-        }
-        mat-icon:hover {
-            cursor: pointer;
-        }
-    }
+    .edit-container, .remove-container { margin-left: 10px; }
 }

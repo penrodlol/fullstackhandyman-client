@@ -3,7 +3,7 @@ import { Component, OnInit, Inject, ViewChild, ViewContainerRef, ComponentFactor
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup } from '@angular/forms';
 import { of } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 export interface DialogData {
   header: string;

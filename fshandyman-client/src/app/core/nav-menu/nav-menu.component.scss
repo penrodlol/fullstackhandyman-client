@@ -1,27 +1,26 @@
-.nav-menu-container {
-    height: 100%;
+@import '../../../base-styles/colors_base.scss';
+@import '../../../base-styles/styles_base.scss';
+
+.nav-menu-container { height: 100%; }
+
+#nav-menu-toolbar {
+    color: #000000;
+    border: $border-thin;
+    border-radius: 10px;
+    background-color: $primary;
 }
 
-mat-sidenav-container {
-    background-color: transparent;
-}
+#side-nav { background-color: $standard; }
+
+mat-sidenav-container { background-color: transparent; }
 
 mat-sidenav {
     width: 300px;
     left: 0;
     color: #000000;
-    border: solid 0.5px #505050;
 }
 
-mat-sidenav-content {
-    margin-top: 20px;
-}
-
-.nav-menu-toolbar {
-    color: #000000;
-    border: solid 0.5px #000000;
-    border-radius: 10px;
-}
+mat-sidenav-content { margin-top: 20px; }
 
 .title {
     margin-left: 10px;
@@ -35,7 +34,5 @@ img {
 }
 
 ::ng-deep {
-    .mat-list-base .mat-list-item {
-        height: 60px !important;
-    }
+    .mat-list-base .mat-list-item { height: 60px !important; }
 }

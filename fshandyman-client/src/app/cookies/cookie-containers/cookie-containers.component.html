@@ -1,10 +1,12 @@
 <mat-list id="cookie-maps-containers-list">
     <div>
-        <mat-list-item *ngFor="let cookieMapContainer of cookieMapsContainers | async"
-            matTooltip='{{cookieMapContainer.name}}'
-            matTooltipPosition='after'>
-            <h4 mat-line>{{cookieMapContainer.name}}</h4>
-            <span mat-line class="container-tag">{{cookieMapContainer.tag}}</span>
+        <mat-list-item 
+            *ngFor="let cookieMapContainer of cookieMapsContainers | async"
+            matTooltip='{{cookieMapContainer.name}} | {{cookieMapContainer.tag}}'
+            matTooltipPosition='after'
+            (click)='selectCookieMapsContainer(cookieMapContainer)'>
+            <h4 id="name" mat-line>{{cookieMapContainer.name}}</h4>
+            <span mat-line id="container-tag">{{cookieMapContainer.tag}}</span>
             <mat-icon>keyboard_arrow_right</mat-icon>
         </mat-list-item>
     </div>

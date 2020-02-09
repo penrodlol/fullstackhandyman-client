@@ -1,3 +1,5 @@
+@import '../../../base-styles/colors_base.scss';
+
 ::ng-deep {
     .mat-dialog-container {
         padding: 0px;
@@ -23,15 +25,14 @@
 }
 
 .action-buttons {
-    button:first-child {
-        color: #ffffff;
-    }
+    button:first-child { color: #ffffff; }
     button:last-child {
         color: #ffffff;
         background-color: #313131;
     }
-}
-
-.disabled {
-    cursor: not-allowed;
+    .enabled { background-color: $primary; }
+    .disabled {
+        background-color: $light;
+        cursor: not-allowed;
+    }
 }

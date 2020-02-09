@@ -1,10 +1,29 @@
+@import '../../../base-styles/colors_base.scss';
+@import '../../../base-styles/styles_base.scss';
+
+#cookie-maps-containers-list {
+    background: $standard;
+    #name {
+        width: 350px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
 mat-list {
     div:first-child {
         min-height: 60vh;
         max-height: 60vh;
         overflow: auto;
     }
-    .container-tag {
-        color: #8e4dff;
-    }
+    .mat-list-item:hover { background-color: $standard-deep; }
+    #container-tag { color: $primary; }
 }
+
+#add-cookie-map-container {
+    border-top: $border-standard;
+    background-color: #ccccccad;
+    height: 50px;
+}
+#add-cookie-map-container:hover { background: $standard-deep; }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, from, } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
 import { CookieMapsContainers } from '../models/cookie-maps-containers.model';
 import { UrlBuilderService } from 'src/app/shared/url/url-builder.service';
 
@@ -25,7 +24,7 @@ export class CookieContainersService {
     });
   }
 
-  refreshCookieMapsContainers(cookieMapsContainer: CookieMapsContainers) {
+  appendCookieMapsContainer(cookieMapsContainer: CookieMapsContainers) {
     const currentCookieMapsContainers = this.cookieMapsContainersSource.getValue();
     const newCookieMapsContainers = [ ...currentCookieMapsContainers, cookieMapsContainer];
     this.cookieMapsContainersSource.next(newCookieMapsContainers);

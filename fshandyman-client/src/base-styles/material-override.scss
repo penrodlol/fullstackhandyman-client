@@ -1,0 +1,30 @@
+@import 'base-styles/styles_base.scss';
+
+#cookies-container {
+    .mat-list-base .mat-list-item {
+        height: 45px !important;
+        cursor: pointer;
+    }
+    .mat-divider-vertical {
+        height: 40px;
+        margin: 0px 10px;
+    }
+}
+
+#dialog {
+    border: $border-standard;
+    .mat-icon-button {
+        background-color: transparent;
+        border: none;
+        float: right;
+        transform: translateY(-5px);
+    }
+    mat-divider { border: $border-thin; }
+    mat-label, .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: #000000;
+    }
+}
+
+#create-cookie-container-form {
+    .mat-hint { color: #000000; }
+}
