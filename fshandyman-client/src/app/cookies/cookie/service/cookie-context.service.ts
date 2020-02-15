@@ -15,8 +15,9 @@ export class CookieContextService implements OnDestroy {
   getCookie(cookieMapsContainer: CookieMapsContainers) {
     let cookieContext: CookieContext = new CookieContext();
     cookieContext.setCookieMapsContainer(cookieMapsContainer);
+    sessionStorage.setItem('lastCookieMapsContainer', JSON.stringify(cookieMapsContainer));
     this.cookieContextSource.next(cookieContext);
   }
 
-  resetCookie = () => this.cookieContextSource.next(null);
+  resetCookie = () => this.cookieContextSource.next(new CookieContext());
 }

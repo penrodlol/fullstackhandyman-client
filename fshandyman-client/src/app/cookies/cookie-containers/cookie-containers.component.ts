@@ -27,6 +27,10 @@ export class CookieContainersComponent implements OnInit, OnChanges {
     this.cookieContainersService.getContainers().subscribe(cookieMapsContainers => {
       this.currentCookieMapsContainers = cookieMapsContainers;
     });
+    const lastCookieMapsContainer = sessionStorage.getItem('lastCookieMapsContainer');
+    if (lastCookieMapsContainer) {
+      this.cookieMapsContainersSelection.emit(JSON.parse(lastCookieMapsContainer));
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -47,6 +51,7 @@ export class CookieContainersComponent implements OnInit, OnChanges {
       .subscribe(cookieMapsContainer => {
         this.snackbarService.openSnackbar({ text: `${cookieMapsContainer.name} created!` });
         this.currentCookieMapsContainers.push(cookieMapsContainer);
+        this.cookieMapsContainersSelection.emit(cookieMapsContainer);
       },
       ex => {
         this.snackbarService.openSnackbar({ text: ex.error.reason, actionText: 'Try again?' })
