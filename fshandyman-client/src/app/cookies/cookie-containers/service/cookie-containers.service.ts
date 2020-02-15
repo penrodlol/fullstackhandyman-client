@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, from, } from 'rxjs';
 import { CookieMapsContainers } from '../models/cookie-maps-containers.model';
@@ -8,7 +8,7 @@ import { map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class CookieContainersService {
+export class CookieContainersService implements OnDestroy {
   cookieUrl: string;
 
   private cookieMapsContainersSource: BehaviorSubject<CookieMapsContainers[]> = new BehaviorSubject([]);
@@ -16,6 +16,10 @@ export class CookieContainersService {
 
   constructor(private urlBuilderService: UrlBuilderService, private http: HttpClient) {
     this.cookieUrl = this.urlBuilderService.buildUrl('cookie');
+  }
+
+  ngOnDestroy(): void {
+    this.cookieMapsContainersSource.unsubscribe();
   }
   
   getContainers(): void {
@@ -26,8 +30,11 @@ export class CookieContainersService {
   }
 
   appendContainer(cookieMapsContainer: CookieMapsContainers) {
-    const currentCookieMapsContainers = this.cookieMapsContainersSource.getValue();
-    const newCookieMapsContainers = [ ...currentCookieMapsContainers, cookieMapsContainer];
+    let oldCookieMapsContainers: CookieMapsContainers[] = [];
+    this.cookieMapsContainersSource.subscribe((currentCookieMapsContainers: CookieMapsContainers[]) => {
+      oldCookieMapsContainers = currentCookieMapsContainers;
+    });
+    const newCookieMapsContainers = [...oldCookieMapsContainers, cookieMapsContainer];
     this.cookieMapsContainersSource.next(newCookieMapsContainers);
   }
 
