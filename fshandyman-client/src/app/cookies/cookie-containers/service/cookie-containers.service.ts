@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, from, } from 'rxjs';
 import { CookieMapsContainers } from '../models/cookie-maps-containers.model';
 import { UrlBuilderService } from 'src/app/shared/url/url-builder.service';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,13 +29,10 @@ export class CookieContainersService implements OnDestroy {
     });
   }
 
-  appendContainer(cookieMapsContainer: CookieMapsContainers) {
-    let oldCookieMapsContainers: CookieMapsContainers[] = [];
-    this.cookieMapsContainersSource.subscribe((currentCookieMapsContainers: CookieMapsContainers[]) => {
-      oldCookieMapsContainers = currentCookieMapsContainers;
+  private appendContainer(cookieMapsContainer: CookieMapsContainers) {
+    this.cookieMapsContainersSource.pipe(take(1)).subscribe(oldCookieMapsContainers => {
+      this.cookieMapsContainersSource.next([...oldCookieMapsContainers, cookieMapsContainer]);
     });
-    const newCookieMapsContainers = [...oldCookieMapsContainers, cookieMapsContainer];
-    this.cookieMapsContainersSource.next(newCookieMapsContainers);
   }
 
   createContainer(containerName: string, containerTag: string): Observable<CookieMapsContainers> {
@@ -45,9 +42,7 @@ export class CookieContainersService implements OnDestroy {
         name: containerName,
         tag: containerTag
       })
-    }).pipe(
-      tap(container => this.appendContainer(container))
-    );
+    }).pipe(tap(container => this.appendContainer(container)));
   }
 
   editContainer(cookieMapsContainer: CookieMapsContainers) {
@@ -62,11 +57,11 @@ export class CookieContainersService implements OnDestroy {
       })
     }).pipe(
       tap((containerNum: number) => {
-        let newContainers: CookieMapsContainers[];
         this.cookieMapsContainersSource.pipe(
-          map(containers => containers.filter(container => container.containerNum !== containerNum))
-        ).subscribe(res => newContainers = res);
-        this.cookieMapsContainersSource.next(newContainers);
+          take(1),
+          map(cookieMapsContainers => cookieMapsContainers.filter(cookieMapsContainer => 
+            cookieMapsContainer.containerNum !== containerNum))
+        ).subscribe(cookieMapsContainers => this.cookieMapsContainersSource.next(cookieMapsContainers));
       })
     );
   }
