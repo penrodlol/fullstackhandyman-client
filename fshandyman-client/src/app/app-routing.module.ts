@@ -4,8 +4,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'handy-cookies', loadChildren: './cookies/cookies.module#CookiesModule' },
-  { path: 'handy-https', loadChildren: './http/http.module#HttpModule' }
+  { path: 'handy-cookies', loadChildren: () => import('./cookies/cookies.module').then(m => m.CookiesModule) }
 ];
 
 @NgModule({

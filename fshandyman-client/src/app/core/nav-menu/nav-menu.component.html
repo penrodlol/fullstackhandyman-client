@@ -13,13 +13,6 @@
                     <img src="{{cookieRoute.icon}}" alt="cookie">
                     <h2>{{cookieRoute.title}}</h2>
                 </a>
-                <mat-divider></mat-divider>
-                <a *ngFor="let httpRoute of httpRoutes" mat-list-item (click)='navmenu.close()'
-                    [routerLink]='[httpRoute.route]'>
-                    <img src="{{httpRoute.icon}}" alt="cookie">
-                    <h2>{{httpRoute.title}}</h2>
-                </a>
-                <mat-divider></mat-divider>
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>
