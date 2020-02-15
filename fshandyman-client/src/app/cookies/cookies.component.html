@@ -11,20 +11,23 @@
                         info
                     </mat-icon>
                 </mat-toolbar>
-                <cookie-containers (cookieMapsContainersSelection)='getCookieMapsContainer($event)'></cookie-containers>
+                <cookie-containers
+                    [removedCookieMapsContainer]='cookieMapsContainerToRemove'
+                    (cookieMapsContainersSelection)='getCookieMapsContainer($event)'>
+                </cookie-containers>
             </div>
         </div>
         <div class="col2">
-            <cookie-container-toolbar [cookieMapsContainer]='cookieMapsContainer'></cookie-container-toolbar>
-            <div id="cookies-container">
-                <div class="sub-col1">
-                    <cookie-maps
-                        *ngIf="cookieMapsContainer"
-                        [containerNum]='cookieMapsContainer.containerNum'>
-                    </cookie-maps>
-                </div>
-                <div class="sub-col2">
-                </div>
+            <div id="cookies-context-container">
+                <ng-container *ngIf="isSelected; else noCookieMapsContainerSelected">
+                    <cookie
+                        [cookieMapsContainer]='cookieMapsContainer'
+                        (removedCookieMapsContainer)='getRemovedCookieMapsContainer($event)'>
+                    </cookie>
+                </ng-container>
+                <ng-template #noCookieMapsContainerSelected>
+                    No cookie maps container selected!
+                </ng-template>
             </div>
         </div>
     </div>

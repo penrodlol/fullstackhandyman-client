@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CookieMapsContainers } from '../cookie-containers/models/cookie-maps-containers.model';
-import { CookieContainersService } from '../cookie-containers/service/cookie-containers.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CookieContainersService } from '../../cookie-containers/service/cookie-containers.service';
 import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 import { DialogService } from 'src/app/shared/dialog/dialog.service';
+import { CookieMapsContainers } from '../../models/cookie-maps-containers.model';
 
 enum CookieMapsContainerProps {
   NAME = "name",
@@ -14,11 +14,12 @@ enum CookieMapsContainerProps {
   templateUrl: './cookie-container-toolbar.component.html',
   styleUrls: ['./cookie-container-toolbar.component.scss']
 })
-export class CookieContainerToolbarComponent implements OnInit {
+export class CookieContainerToolbarComponent {
   EDIT_CONTAINER_NAME_PLACEHOLDER = "Edit container name here";
   EDIT_CONTAINER_TAG_PLACEHOLDER = "Edit container tag here";
 
   @Input() cookieMapsContainer: CookieMapsContainers;
+  @Output() removedCookieMapsContainer: EventEmitter<CookieMapsContainers> = new EventEmitter();
 
   isEditingName: Boolean = false;
   isEditingTag: Boolean = false;
@@ -28,8 +29,6 @@ export class CookieContainerToolbarComponent implements OnInit {
     private snackbarService: SnackbarService,
     private dialogService: DialogService
   ) { }
-
-  ngOnInit() { }
 
   editContainer(type: String) {
     this.isEditingName = type === CookieMapsContainerProps.NAME ? true : false;
@@ -72,6 +71,7 @@ export class CookieContainerToolbarComponent implements OnInit {
           this.cookieContainersService.removeContainer(this.cookieMapsContainer.containerNum).subscribe(
             _ => {
               this.snackbarService.openSnackbar( {text: `${this.cookieMapsContainer.name} has been successfully removed.`} );
+              this.removedCookieMapsContainer.emit(this.cookieMapsContainer);
               this.cookieMapsContainer = null;
             },
             ex => this.snackbarService.openSnackbar({ text: ex.error.reason })

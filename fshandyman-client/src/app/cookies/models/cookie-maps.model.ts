@@ -1,4 +1,4 @@
-export class CookieMap {
+export class CookieMaps {
     private _mapNum: number;
     private _containerNum: number;
     private _name: string;

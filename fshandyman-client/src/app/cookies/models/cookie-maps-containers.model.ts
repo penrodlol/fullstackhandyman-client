@@ -1,7 +1,7 @@
 export class CookieMapsContainers {
-    _containerNum: number;
-    _name: string;
-    _tag: string;
+    private _containerNum: number;
+    private _name: string;
+    private _tag: string;
 
     get containerNum(): number { return this._containerNum; }
     set containerNum(containerNum: number) { this._containerNum = containerNum; }

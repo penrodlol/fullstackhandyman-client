@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieMapsContainers } from './cookie-containers/models/cookie-maps-containers.model';
-import { DialogService } from '../shared/dialog/dialog.service';
+import { CookieMapsContainers } from './models/cookie-maps-containers.model';
 
 @Component({
   selector: 'app-cookies',
@@ -9,6 +8,8 @@ import { DialogService } from '../shared/dialog/dialog.service';
 })
 export class CookiesComponent implements OnInit {
   cookieMapsContainer: CookieMapsContainers;
+  cookieMapsContainerToRemove: CookieMapsContainers;
+  isSelected: Boolean = false;
 
   constructor() { }
 
@@ -17,5 +18,10 @@ export class CookiesComponent implements OnInit {
 
   getCookieMapsContainer(cookieMapsContainer: CookieMapsContainers) {
     this.cookieMapsContainer = cookieMapsContainer;
+    this.isSelected = true;
+  }
+
+  getRemovedCookieMapsContainer(removedCookieMapsContainer: CookieMapsContainers) {
+    this.cookieMapsContainerToRemove = removedCookieMapsContainer;
   }
 }

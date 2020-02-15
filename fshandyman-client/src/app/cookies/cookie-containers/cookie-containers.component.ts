@@ -1,9 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CookieContainersService } from './service/cookie-containers.service';
-import { CookieMapsContainers } from './models/cookie-maps-containers.model';
+import { CookieMapsContainers } from '../models/cookie-maps-containers.model';
 import { DialogService } from '../../shared/dialog/dialog.service';
 import { CreateCookieContainerComponent } from './create-cookie-container/create-cookie-container.component';
-import { Observable } from 'rxjs';
 import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 import { takeWhile } from 'rxjs/operators';
 
@@ -12,10 +11,11 @@ import { takeWhile } from 'rxjs/operators';
   templateUrl: './cookie-containers.component.html',
   styleUrls: ['./cookie-containers.component.scss']
 })
-export class CookieContainersComponent implements OnInit {
+export class CookieContainersComponent implements OnInit, OnChanges {
+  @Input() removedCookieMapsContainer: CookieMapsContainers;
   @Output() cookieMapsContainersSelection: EventEmitter<CookieMapsContainers> = new EventEmitter();
 
-  cookieMapsContainers: Observable<CookieMapsContainers[]> = this.cookieContainersService.currentCookieMapsContainers;
+  currentCookieMapsContainers: CookieMapsContainers[];
 
   constructor(
     private cookieContainersService: CookieContainersService,
@@ -24,27 +24,36 @@ export class CookieContainersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cookieContainersService.getContainers();
+    this.cookieContainersService.getContainers().subscribe(cookieMapsContainers => {
+      this.currentCookieMapsContainers = cookieMapsContainers;
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.removedCookieMapsContainer) {
+      this.currentCookieMapsContainers = this.currentCookieMapsContainers.filter(cookieMapsContainers => {
+        return cookieMapsContainers.containerNum !== this.removedCookieMapsContainer.containerNum;
+      });
+      this.removedCookieMapsContainer = null;
+    }
   }
 
   createCookieMapsContainer() {
     this.dialogService.showComponentDialog('Create Container', 'Create', CreateCookieContainerComponent, 'Cancel')
-      .afterClosed()
-      .pipe(takeWhile(result => result != null))
-      .subscribe((result: any) => {
-        this.cookieContainersService.createContainer(result.name, result.tag).subscribe(
-          (newCookieMapsContainer: CookieMapsContainers) => {
-            this.snackbarService.openSnackbar({ text: `${newCookieMapsContainer.name} created!` });
-          },
-          ex => {
-            this.snackbarService.openSnackbar({ text: ex.error.reason, actionText: 'Try again?' }).subscribe(event => {
-              if (event.dismissedByAction) {
-                this.createCookieMapsContainer();
-              }
-            });
-          }
-        );
+    .afterClosed()
+    .pipe(takeWhile(formRes => formRes != null))
+    .subscribe((formRes: any) => {
+      this.cookieContainersService.createContainer(formRes.name, formRes.tag)
+      .subscribe(cookieMapsContainer => {
+        this.snackbarService.openSnackbar({ text: `${cookieMapsContainer.name} created!` });
+        this.currentCookieMapsContainers.push(cookieMapsContainer);
+      },
+      ex => {
+        this.snackbarService.openSnackbar({ text: ex.error.reason, actionText: 'Try again?' })
+        .pipe(takeWhile(event => event.dismissedByAction))
+        .subscribe(_ => this.createCookieMapsContainer());
       });
+    })
   }
 
   selectCookieMapsContainer(cookieMapsContainer: CookieMapsContainers) {
